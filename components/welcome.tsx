@@ -7,7 +7,7 @@ const Welcome = () => {
         <View style={styles.container}>
             <Text style={styles.text}>Welcome to My New App</Text>
             <View style={styles.buttonContainer}>
-                <ButtonTemplate link={"/about"} text={"Calgary"} color="red" />
+                <ButtonTemplate link={"/(tabs)"} text={"Calgary"} color="red" />
                 <ButtonTemplate link={"/(tabs)"} text={"Edmonton"} color="green" />
             </View>
         </View>
