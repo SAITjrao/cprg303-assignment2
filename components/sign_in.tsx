@@ -2,8 +2,9 @@ import {useState, useEffect} from "react";
 import {View, Text, StyleSheet, Button, TextInput, Alert} from "react-native";
 import credentials from "../credentials.json";
 
+type Sign_inProps = {setIsSignedIn: (isSignedIn: boolean) => void};
 
-const Sign_in = () => {
+const Sign_in: React.FC<Sign_inProps> = ({setIsSignedIn}) => {
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     
@@ -21,7 +22,7 @@ const Sign_in = () => {
             const user = credentials.users.find(user => user.username === username && user.password === password);
 
             if(user){
-                alert("Login success!");
+                setIsSignedIn(true);
             }
             else{
                 alert("Invalid username/password. Please try again!");
@@ -37,7 +38,7 @@ const Sign_in = () => {
                 value={username} 
                 onChangeText={setUsername}
                 />
-            <TextInput style={styles.input} placeholder="password" value={password} onChangeText={setPassword}/>
+            <TextInput style={styles.input} placeholder="password" value={password} onChangeText={setPassword} secureTextEntry={true}/>
             <Button title="Login" onPress={handleLogin} />
         </View>
     );
